@@ -47,7 +47,6 @@ public class FriendManagementController {
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ResponseEntity<FriendManagementValidation> newFriendConnection(@Valid @RequestBody com.capgemini.model.UserRequest userReq, BindingResult result)throws ResourceNotFoundException {
-		//public ResponseEntity<BaseResponse> newFriendConnection(@RequestBody com.capgemini.model.UserRequest userReq) {	
 		LOG.info("====logger test 1234=======");
 		LOG.debug("====logger test =======");
 		BaseResponse response = new BaseResponse();
@@ -61,17 +60,6 @@ public class FriendManagementController {
 			}else {
 				responseEntity = new ResponseEntity<FriendManagementValidation>(fmv, HttpStatus.BAD_REQUEST);
 			}
-			
-//		System.out.println("======="+isNewfrndMangmReqSuccess);
-//		LOG.info("======="+isNewfrndMangmReqSuccess);
-//		if(isNewfrndMangmReqSuccess){
-//		response.setStatus(SUCCESS_STATUS);
-//		   //response.setCode(CODE_SUCCESS);
-//		  } else {
-//		   response.setStatus(ERROR_STATUS);
-//		   //response.setCode(AUTH_FAILURE);
-//		  }
-//		re =  new ResponseEntity<BaseResponse>(response, HttpStatus.OK);
 		 
 		}catch(Exception e) {
 			
@@ -84,97 +72,6 @@ public class FriendManagementController {
 
 	}
 
-	
-	
-	/*
-	######################--------------
-	
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	//public BaseResponse newFriendConnection(@Valid @RequestBody com.capgemini.model.UserRequest userReq, BindingResult result)throws ResourceNotFoundException {
-	public ResponseEntity<BaseResponse> newFriendConnection(@Valid @RequestBody com.capgemini.model.UserRequest userReq, BindingResult result)throws ResourceNotFoundException {
-			
-	//public ResponseEntity<BaseResponse> newFriendConnection(@RequestBody com.capgemini.model.UserRequest userReq) {	
-		LOG.info("--------info---Test ----------------");
-		LOG.info("--------info---Test ----------------" +frndMngtServc);
-		List <UserEmail > emails = (List<UserEmail>) userReq.getFriends();
-		System.out.println("========================="+emails.get(0).getEmail());
-		System.out.println("=========================" +emails.get(1).getEmail());	
-	
-	
-	System.out.println("-----Saving user11." +emails);
-	System.out.println("Saving user." +emails.get(0));
-	System.out.println("Saving user." +emails.get(1));
-	//System.out.println("-----Saving user." +userReq.getFriends().get(1));
-		//System.out.println("Saving user." +userReq.getFriends().get(2)());
-		//LOG.info("Saving user." +userReq.getEmailFirst());
-		//LOG.info("Saving user." +userReq.getEmailSecond());
-		
-		
-		if(result.hasErrors()) {
-		fmError.setStatus("Failed");
-		if(result.getFieldError("requestor") != null && result.getFieldError("target") != null) {
-			fmError.setErrorDescription(result.getFieldError("requestor").getDefaultMessage()+" "+result.getFieldError("target").getDefaultMessage());
-		}else if(result.getFieldError("target") != null) {
-			fmError.setErrorDescription(result.getFieldError("target").getDefaultMessage());
-		}else{
-			fmError.setErrorDescription(result.getFieldError("requestor").getDefaultMessage());
-			
-		}
-			return new ResponseEntity<FriendManagementValidation>(fmError, HttpStatus.BAD_REQUEST);
-		
-	}
-		
-		
-		
-		
-		{
-			"status": "success",
-			"code": 100
-			}
-		{
-			"success": "true"
-			
-			}
-		BaseResponse response = new BaseResponse();
-		ResponseEntity<BaseResponse> re = null;
-		try{
-		boolean isNewfrndMangmReqSuccess = frndMngtServc.addNewFriendConnection(userReq)	;
-		System.out.println("======="+isNewfrndMangmReqSuccess);
-		if(isNewfrndMangmReqSuccess){
-		response.setStatus(SUCCESS_STATUS);
-		   //response.setCode(CODE_SUCCESS);
-		  } else {
-		   response.setStatus(ERROR_STATUS);
-		   //response.setCode(AUTH_FAILURE);
-		  }
-		re =  new ResponseEntity<BaseResponse>(response, HttpStatus.OK);
-		 
-		}catch(Exception e) {
-			
-			re =  new ResponseEntity<BaseResponse>(response, HttpStatus.SERVICE_UNAVAILABLE);
-			
-		} 
-		
-		return re;
-		  
-		  
-			
-						  
-		  
-  		    		
-	}*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	/**
 	 * @param subscriber
